@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in agig.gemspec
-gemspec
+gem 'net-irc'
+gem 'json'
+gem 'octokit'
