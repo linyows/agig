@@ -1,10 +1,13 @@
 require 'optparse'
 
 module Agig::OptParser
+  DEFAULT_HOST = '127.0.0.1'
+  DEFAULT_PORT = 16705
+
   def self.parse!(argv)
     opts = {
-      port: 16705,
-      host: 'localhost',
+      host: Agig::OptParser::DEFAULT_HOST,
+      port: Agig::OptParser::DEFAULT_PORT,
       log: nil,
       debug: false,
       daemonize: false,
@@ -16,11 +19,11 @@ module Agig::OptParser
         separator ""
 
         separator "Options:"
-        on("-p", "--port [PORT=#{opts[:port]}]", "port number to listen") do |port|
+        on("-p", "--port [PORT=#{opts[:port]}]", "use PORT (default: #{Agig::OptParser::DEFAULT_PORT})") do |port|
           opts[:port] = port
         end
 
-        on("-h", "--host [HOST=#{opts[:host]}]", "host name or IP address to listen") do |host|
+        on("-h", "--host [HOST=#{opts[:host]}]", "listen HOST (default: #{Agig::OptParser::DEFAULT_HOST})") do |host|
           opts[:host] = host
         end
 
