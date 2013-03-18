@@ -1,13 +1,13 @@
-require "optparse"
+require 'optparse'
 
 module Agig::OptParser
   def self.parse!(argv)
     opts = {
-      :port  => 16705,
-      :host  => "localhost",
-      :log   => nil,
-      :debug => false,
-      :foreground => false,
+      port: 16705,
+      host: 'localhost',
+      log: nil,
+      debug: false,
+      daemonize: false,
     }
 
     OptionParser.new do |parser|
@@ -28,14 +28,13 @@ module Agig::OptParser
           opts[:log] = log
         end
 
-        on("-d", "--debug", "Enable debug mode") do |debug|
-          opts[:log]   = $stdout
+        on("-d", "--debug", "enable debug mode") do
+          opts[:log] = $stdout
           opts[:debug] = true
         end
 
-        on("-f", "--foreground", "run foreground") do |foreground|
-          opts[:log]        = $stdout
-          opts[:foreground] = true
+        on("-D", "--daemonize", "run daemonized in the background") do
+          opts[:daemonize] = true
         end
 
         parse!(argv)

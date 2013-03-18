@@ -5,6 +5,7 @@ module Agig::Client
   def self.run
     opts = Agig::OptParser.parse!(ARGV)
 
+    Process.daemon if opts[:daemonize]
     opts[:logger] = Logger.new(opts[:log], "daily")
     opts[:logger].level = opts[:debug] ? Logger::DEBUG : Logger::INFO
 
