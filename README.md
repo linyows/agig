@@ -11,7 +11,8 @@ Modified from original gig.rb:
 ## Installation and Usage
 
     $ gem install agig
-    $ agig -d
+    $ agig --help
+    $ agig -D
 
 ## Contributing
 
@@ -24,4 +25,3 @@ Modified from original gig.rb:
 ## Contributor
 
  * @morygonzalez
-
